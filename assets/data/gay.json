@@ -1,0 +1,21 @@
+{
+  "bpm": 120,
+  "notes": [
+    { 
+      "time": 1000, 
+      "direction": "left" 
+    },
+    { 
+      "time": 2000, 
+      "direction": "down" 
+    },
+    { 
+      "time": 3000, 
+      "direction": "up" 
+    },
+    { 
+      "time": 4000, 
+      "direction": "right" 
+    }
+  ]
+}
