@@ -8,8 +8,10 @@ class Conductor
     public static var songStartTime:Float = 0;
     public static var bpm:Float = 120;
 
-    public static function update(elapsed:Float):Void
+	override public function update(elapsed:Float):Void
     {
+		super.update(elapsed);
+        
         if (FlxG.sound.music != null && FlxG.sound.music.playing)
             songPosition = FlxG.sound.music.time;
     }

@@ -9,7 +9,8 @@ class Note extends FlxSprite
     public var time:Float;
     public var direction:String;
     public var isSustain:Bool;
-    public var hit:Bool;
+	public var beenHit:Bool;
+	public var beenMiss:Bool;
     
     public function new(x:Float, y:Float, direction:String, time:Float, isSustain:Bool = false) 
     {
@@ -42,7 +43,7 @@ class Note extends FlxSprite
 		}
     }
 
-    override public function update(elapsed:Float)
+	override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
     }

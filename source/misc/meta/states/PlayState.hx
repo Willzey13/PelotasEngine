@@ -1,7 +1,7 @@
 package misc.meta.states;
 
-import flixel.FlxG;
 import data.Conductor;
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
 import haxe.Json;
@@ -53,11 +53,6 @@ class PlayState extends FlxState
 
     override public function update(elapsed:Float):Void
     {
-        super.update(elapsed);
-        if (isPlaying)
-            Conductor.update(elapsed);
-
-        for (note in notes)
-            note.update(elapsed);
+		super.update(elapsed);
     }
 }
