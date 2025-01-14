@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="holds.png">
+	<!-- Created with Adobe Animate version 24.0.3.19 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="green hold end instância 10000" x="0" y="0" width="52" height="66"/>
+	<SubTexture name="green hold piece instância 10000" x="52" y="0" width="52" height="44"/>
+	<SubTexture name="pink hold end instância 10000" x="104" y="0" width="51" height="66"/>
+	<SubTexture name="pink hold piece instância 10000" x="155" y="0" width="51" height="44"/>
+	<SubTexture name="purple hold end instância 10000" x="0" y="66" width="52" height="66"/>
+	<SubTexture name="purple hold piece instância 10000" x="52" y="66" width="51" height="44"/>
+	<SubTexture name="yellow end hold instância 10000" x="103" y="66" width="51" height="66"/>
+	<SubTexture name="yellow hold piece instância 10000" x="154" y="66" width="52" height="45"/>
+</TextureAtlas>

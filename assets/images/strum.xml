@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="strum.png">
+	<!-- Created with Adobe Animate version 24.0.3.19 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="arrow static instância 10000" x="0" y="0" width="155" height="178"/>
+	<SubTexture name="arrow static instância 20000" x="155" y="0" width="178" height="155"/>
+	<SubTexture name="arrow static instância 30000" x="333" y="0" width="177" height="156"/>
+	<SubTexture name="arrow static instância 40000" x="510" y="0" width="156" height="177"/>
+	<SubTexture name="down confirm instância 10000" x="666" y="0" width="238" height="229"/>
+	<SubTexture name="down confirm instância 10001" x="904" y="0" width="238" height="229"/>
+	<SubTexture name="down confirm instância 10002" x="1142" y="0" width="220" height="211" frameX="-6" frameY="-12" frameWidth="238" frameHeight="229"/>
+	<SubTexture name="down confirm instância 10003" x="1142" y="0" width="220" height="211" frameX="-6" frameY="-12" frameWidth="238" frameHeight="229"/>
+	<SubTexture name="down press instância 10000" x="1362" y="0" width="164" height="143"/>
+	<SubTexture name="down press instância 10001" x="1362" y="0" width="164" height="143"/>
+	<SubTexture name="down press instância 10002" x="1526" y="0" width="158" height="140" frameX="-2" frameY="-1" frameWidth="164" frameHeight="143"/>
+	<SubTexture name="down press instância 10003" x="1526" y="0" width="158" height="140" frameX="-2" frameY="-1" frameWidth="164" frameHeight="143"/>
+	<SubTexture name="left confirm instância 10000" x="1684" y="0" width="225" height="230" frameX="-3" frameY="-1" frameWidth="228" frameHeight="231"/>
+	<SubTexture name="left confirm instância 10001" x="0" y="230" width="209" height="220" frameX="-3" frameY="-4" frameWidth="228" frameHeight="231"/>
+	<SubTexture name="left confirm instância 10002" x="209" y="230" width="216" height="228" frameX="0" frameY="0" frameWidth="228" frameHeight="231"/>
+	<SubTexture name="left confirm instância 10003" x="209" y="230" width="216" height="228" frameX="0" frameY="0" frameWidth="228" frameHeight="231"/>
+	<SubTexture name="left press instância 10000" x="425" y="230" width="143" height="163"/>
+	<SubTexture name="left press instância 10001" x="425" y="230" width="143" height="163"/>
+	<SubTexture name="left press instância 10002" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10003" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10004" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10005" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10006" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10007" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10008" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10009" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10010" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10011" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10012" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10013" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10014" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10015" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10016" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10017" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10018" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="left press instância 10019" x="568" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right confirm instância 10000" x="707" y="230" width="218" height="227" frameX="-2" frameY="-3" frameWidth="222" frameHeight="231"/>
+	<SubTexture name="right confirm instância 10001" x="925" y="230" width="218" height="227" frameX="-2" frameY="-3" frameWidth="222" frameHeight="231"/>
+	<SubTexture name="right confirm instância 10002" x="1143" y="230" width="222" height="231"/>
+	<SubTexture name="right confirm instância 10003" x="1143" y="230" width="222" height="231"/>
+	<SubTexture name="right press instância 10000" x="1365" y="230" width="143" height="163"/>
+	<SubTexture name="right press instância 10001" x="1365" y="230" width="143" height="163"/>
+	<SubTexture name="right press instância 10002" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10003" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10004" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10005" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10006" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10007" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10008" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10009" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10010" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10011" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10012" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10013" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10014" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10015" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10016" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10017" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10018" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10019" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10020" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10021" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10022" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10023" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10024" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10025" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="right press instância 10026" x="1508" y="230" width="139" height="158" frameX="-2" frameY="-3" frameWidth="143" frameHeight="163"/>
+	<SubTexture name="up confirm instância 10000" x="1647" y="230" width="237" height="227"/>
+	<SubTexture name="up confirm instância 10001" x="0" y="461" width="237" height="227"/>
+	<SubTexture name="up confirm instância 10002" x="237" y="461" width="215" height="206" frameX="-10" frameY="-11" frameWidth="237" frameHeight="227"/>
+	<SubTexture name="up confirm instância 10003" x="237" y="461" width="215" height="206" frameX="-10" frameY="-11" frameWidth="237" frameHeight="227"/>
+	<SubTexture name="up press instância 10000" x="452" y="461" width="164" height="143"/>
+	<SubTexture name="up press instância 10001" x="452" y="461" width="164" height="143"/>
+	<SubTexture name="up press instância 10002" x="616" y="461" width="158" height="139" frameX="-2" frameY="-2" frameWidth="164" frameHeight="143"/>
+	<SubTexture name="up press instância 10003" x="616" y="461" width="158" height="139" frameX="-2" frameY="-2" frameWidth="164" frameHeight="143"/>
+</TextureAtlas>

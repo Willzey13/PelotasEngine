@@ -33,6 +33,23 @@ class Paths
         return atlasFrames;
     }
 
+    public static function loadImage(key:String, ?library:String = ''):FlxGraphic
+    {
+        var path:String = getPath('images/$key.png', library);
+        var bitmapData:BitmapData = BitmapData.fromFile(path);
+        return FlxGraphic.fromBitmapData(bitmapData, true);
+    }
+
+    public static function getStage(key:String, ?library:String = '')
+    {
+        var path:String = getPath('stages/$key.png', library);
+        var bitmapData:BitmapData = BitmapData.fromFile(path);
+        return path;
+    }
+
+    public static function getCharacter(key:String)
+        return getPath('images/characters/json/$key.json');
+
     public static function data(key:String):String
         return 'assets/data/$key.json';
 }
