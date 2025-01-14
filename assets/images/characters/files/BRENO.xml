@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="BRENO.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="Breno idle dance0000" x="583" y="0" width="583" height="874" frameX="-865" frameY="-202" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno idle dance0001" x="6203" y="0" width="503" height="637" frameX="-866" frameY="-439" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno idle dance0002" x="5676" y="4640" width="504" height="645" frameX="-870" frameY="-431" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno idle dance0003" x="5676" y="3994" width="504" height="646" frameX="-871" frameY="-430" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno idle dance0004" x="5676" y="3994" width="504" height="646" frameX="-871" frameY="-430" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno idle dance0005" x="5676" y="3994" width="504" height="646" frameX="-871" frameY="-430" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno idle dance0006" x="5676" y="3994" width="504" height="646" frameX="-871" frameY="-430" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT0000" x="3509" y="0" width="573" height="633" frameX="-803" frameY="-442" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT0001" x="3509" y="2813" width="570" height="635" frameX="-811" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT0002" x="3509" y="2813" width="570" height="635" frameX="-811" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT0003" x="3509" y="2813" width="570" height="635" frameX="-811" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT0004" x="0" y="3455" width="567" height="634" frameX="-817" frameY="-441" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT0005" x="0" y="5372" width="537" height="629" frameX="-853" frameY="-446" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT0000" x="5142" y="3232" width="528" height="649" frameX="-952" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT0001" x="5676" y="1298" width="527" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT0002" x="5676" y="1298" width="527" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT0003" x="5676" y="1298" width="527" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT0004" x="5142" y="2584" width="529" height="648" frameX="-945" frameY="-427" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT0005" x="5142" y="1292" width="533" height="644" frameX="-941" frameY="-431" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP0000" x="4576" y="2771" width="494" height="718" frameX="-900" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP0001" x="4576" y="635" width="499" height="713" frameX="-895" frameY="-363" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP0002" x="4576" y="1348" width="499" height="713" frameX="-895" frameY="-363" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP0003" x="4576" y="1348" width="499" height="713" frameX="-895" frameY="-363" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP0004" x="4576" y="2061" width="501" height="710" frameX="-896" frameY="-366" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP0005" x="5676" y="2663" width="480" height="702" frameX="-917" frameY="-374" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN0000" x="1847" y="2811" width="646" height="564" frameX="-819" frameY="-513" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN0001" x="1208" y="2811" width="639" height="571" frameX="-824" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN0002" x="1208" y="2811" width="639" height="571" frameX="-824" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN0003" x="1208" y="2811" width="639" height="571" frameX="-824" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN0004" x="2857" y="1838" width="638" height="574" frameX="-823" frameY="-503" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN0005" x="528" y="4724" width="585" height="581" frameX="-834" frameY="-496" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="breno Hey0000" x="5142" y="3881" width="528" height="649" frameX="-952" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="breno Hey0001" x="5676" y="0" width="527" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="breno Hey0002" x="5676" y="0" width="527" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="breno Hey0003" x="5676" y="0" width="527" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="breno Hey0004" x="5142" y="1936" width="529" height="648" frameX="-945" frameY="-427" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="breno Hey0005" x="5142" y="648" width="533" height="644" frameX="-941" frameY="-431" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX UP0000" x="1757" y="0" width="510" height="743" frameX="-884" frameY="-333" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX UP0001" x="1757" y="743" width="494" height="732" frameX="-900" frameY="-344" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX UP0002" x="4082" y="0" width="494" height="732" frameX="-900" frameY="-344" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX UP0003" x="1757" y="743" width="494" height="732" frameX="-900" frameY="-344" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX UP0004" x="3509" y="633" width="495" height="732" frameX="-902" frameY="-344" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX UP0005" x="5676" y="1947" width="474" height="716" frameX="-923" frameY="-360" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX DOWN0000" x="2493" y="2811" width="637" height="564" frameX="-828" frameY="-513" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX DOWN0001" x="567" y="3455" width="610" height="571" frameX="-853" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX DOWN0002" x="567" y="3455" width="610" height="571" frameX="-853" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX DOWN0003" x="567" y="3455" width="610" height="571" frameX="-853" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX DOWN0004" x="567" y="3455" width="610" height="571" frameX="-853" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX DOWN0005" x="552" y="4089" width="602" height="574" frameX="-859" frameY="-503" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX DOWN0006" x="4576" y="3489" width="554" height="581" frameX="-865" frameY="-496" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX LEFT0000" x="2857" y="1205" width="580" height="633" frameX="-776" frameY="-442" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX LEFT0001" x="4576" y="0" width="566" height="635" frameX="-792" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX LEFT0002" x="4576" y="0" width="566" height="635" frameX="-792" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX LEFT0003" x="4576" y="0" width="566" height="635" frameX="-792" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX LEFT0004" x="0" y="4089" width="552" height="635" frameX="-807" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX LEFT0005" x="5676" y="3365" width="527" height="629" frameX="-840" frameY="-446" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX RIGHT0000" x="1166" y="0" width="591" height="649" frameX="-952" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX RIGHT0001" x="589" y="874" width="589" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX RIGHT0002" x="589" y="874" width="589" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX RIGHT0003" x="0" y="874" width="589" height="649" frameX="-947" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX RIGHT0004" x="0" y="2163" width="582" height="648" frameX="-945" frameY="-427" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO BEATBOX RIGHT0005" x="0" y="2811" width="568" height="644" frameX="-941" frameY="-431" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0000" x="1847" y="2811" width="646" height="564" frameX="-819" frameY="-513" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0001" x="2857" y="0" width="652" height="565" frameX="-820" frameY="-512" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0002" x="1733" y="2163" width="642" height="574" frameX="-824" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0003" x="568" y="2811" width="640" height="571" frameX="-826" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0004" x="1733" y="2163" width="642" height="574" frameX="-824" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0005" x="568" y="2811" width="640" height="571" frameX="-826" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0006" x="1733" y="2163" width="642" height="574" frameX="-824" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE DOWN MISS0007" x="568" y="2811" width="640" height="571" frameX="-826" frameY="-506" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0000" x="4576" y="2771" width="494" height="718" frameX="-900" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0001" x="4082" y="732" width="480" height="730" frameX="-905" frameY="-352" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0002" x="3509" y="1365" width="500" height="724" frameX="-895" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0003" x="3509" y="2089" width="500" height="724" frameX="-895" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0004" x="3509" y="1365" width="500" height="724" frameX="-895" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0005" x="3509" y="2089" width="500" height="724" frameX="-895" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0006" x="3509" y="1365" width="500" height="724" frameX="-895" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE UP MISS0007" x="3509" y="2089" width="500" height="724" frameX="-895" frameY="-358" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0000" x="3509" y="0" width="573" height="633" frameX="-803" frameY="-442" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0001" x="2857" y="565" width="575" height="640" frameX="-803" frameY="-438" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0002" x="582" y="2163" width="576" height="641" frameX="-809" frameY="-437" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0003" x="1158" y="2163" width="575" height="641" frameX="-809" frameY="-437" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0004" x="582" y="2163" width="576" height="641" frameX="-809" frameY="-437" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0005" x="1158" y="2163" width="575" height="641" frameX="-809" frameY="-437" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0006" x="582" y="2163" width="576" height="641" frameX="-809" frameY="-437" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE LEFT MISS0007" x="1158" y="2163" width="575" height="641" frameX="-809" frameY="-437" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0000" x="5142" y="3232" width="528" height="649" frameX="-952" frameY="-426" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0001" x="5142" y="0" width="534" height="648" frameX="-949" frameY="-428" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0002" x="5676" y="649" width="527" height="649" frameX="-949" frameY="-427" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0003" x="0" y="4724" width="528" height="648" frameX="-948" frameY="-428" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0004" x="5676" y="649" width="527" height="649" frameX="-949" frameY="-427" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0005" x="0" y="4724" width="528" height="648" frameX="-948" frameY="-428" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0006" x="5676" y="649" width="527" height="649" frameX="-949" frameY="-427" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="BRENO NOTE RIGHT MISS0007" x="0" y="4724" width="528" height="648" frameX="-948" frameY="-428" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0000" x="0" y="0" width="583" height="874" frameX="-865" frameY="-202" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0001" x="6203" y="637" width="503" height="637" frameX="-866" frameY="-439" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0002" x="1178" y="874" width="578" height="648" frameX="-839" frameY="-432" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0003" x="2267" y="640" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0004" x="2267" y="1280" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0005" x="590" y="1523" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0006" x="1180" y="1523" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0007" x="2267" y="0" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0008" x="590" y="1523" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0009" x="0" y="1523" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+	<SubTexture name="Breno dodge0010" x="2267" y="1280" width="590" height="640" frameX="-825" frameY="-440" frameWidth="1920" frameHeight="1080"/>
+</TextureAtlas>
