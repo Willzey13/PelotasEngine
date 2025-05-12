@@ -183,6 +183,7 @@ class PlayState extends MusicBeatState
 	public var released:Array<Bool> 	= [];
 	public var ghostTapping:Bool = false;
 	public static var defaultStageZoom:Float = 1.03;
+	var perdidos:Int = 0;
 
     override public function update(elapsed:Float):Void
     {
@@ -255,15 +256,12 @@ class PlayState extends MusicBeatState
 							}
 						}
 				
-						possibleNotes.sort((a, b) -> Std.int(a.time - b.time));
-				
+						possibleNotes.sort((a, b) -> Std.int(Math.abs(a.time - Conductor.songPosition) - Math.abs(b.time - Conductor.songPosition)));
+
 						if (possibleNotes.length > 0)
 						{
-							for (noteToHit in possibleNotes)
-							{
-								onGoodHitNote(noteToHit);
-								break;
-							}
+							var noteToHit = possibleNotes[0];
+							onGoodHitNote(noteToHit);
 						}
 					}
 				}
@@ -306,11 +304,9 @@ class PlayState extends MusicBeatState
 						onGoodHitNote(customNote);
 				}
 
-				if (customNote.isPlayer && !customNote.isSustain && !customNote.beenHit && !customNote.beenMiss && customNote.y < playerStrumline.members[customNote.strumData].y + 10)
-				{
+				if (customNote.isPlayer && !customNote.isSustain && !customNote.beenHit && !customNote.beenMiss && customNote.y < playerStrumline.members[customNote.strumData].y)
 					if (Conductor.songPosition - customNote.time > Judgement.worstTiming())
 						onMissNote(customNote);
-				}
 					
 			}
 		}
@@ -369,6 +365,9 @@ class PlayState extends MusicBeatState
 		if (accuracy < 0) accuracy = 0;
 		score -= 10;
 		if (score < 0) score = 0;
+
+		perdidos -= 1;
+		trace('QUANTOS FORAM PERDIDOS: ' + perdidos);
 
 		scoreText.text = "Score: " + score;
 		accuracyText.text = "Accuracy: " + Std.int(accuracy) + "%";
