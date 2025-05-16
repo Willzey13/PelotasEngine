@@ -10,6 +10,9 @@ This project uses the following HaxeFlixel libraries and other tools to function
 - 'flixel-addons': **3.0.2**
 - 'lime': **8.0.2**
 - 'OpenFL': **9.3.1**
+- 'flxanimate': **git**
+
+## Required Haxe 4.3.6
 
 ### Installation
 
@@ -21,3 +24,4 @@ haxelib install flixel-ui 2.5.0
 haxelib install flixel-addons 3.0.2
 haxelib install lime 8.0.2
 haxelib install openfl 9.3.1
+haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate 768740a56b26aa0c072720e0d1236b94afe68e3e

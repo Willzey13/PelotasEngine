@@ -42,4 +42,10 @@ class Paths
 
     public static function data(key:String):String
         return 'assets/data/$key.json';
+
+    public static function sound(key:String, ?library:String = ''):Sound
+    {
+        var path:String = getPath('sounds/$key.ogg', library);
+        return Sound.fromFile(path);
+    }
 }

@@ -1,5 +1,6 @@
 package;
 
+import Controls;
 import data.Conductor.BPMChangeEvent;
 import data.Conductor;
 import flixel.FlxG;
@@ -7,6 +8,7 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
+import misc.CustomFadeTransition;
 
 class MusicBeatState extends FlxUIState
 {
@@ -16,12 +18,19 @@ class MusicBeatState extends FlxUIState
 	private var curStep:Int = 0;
 	private var curBeat:Int = 0;
 
+	public var controls:Controls;
+
 	override function create()
 	{
-		if (transIn != null)
-			trace('reg ' + transIn.region);
+		controls = new Controls();
+		controls.setupDefaults();
 
+		var skip:Bool = FlxTransitionableState.skipNextTransOut;
 		super.create();
+		if (!skip)
+			openSubState(new CustomFadeTransition(0.7, true));
+
+		FlxTransitionableState.skipNextTransOut = false;
 	}
 
 	override function update(elapsed:Float)

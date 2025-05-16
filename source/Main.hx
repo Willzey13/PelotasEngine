@@ -1,9 +1,10 @@
 package;
 
+import data.CrashHandler;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxSprite;
-import misc.meta.states.PlayState;
+import misc.meta.states.MainMenuState;
 import openfl.display.Sprite;
 
 class Main extends Sprite
@@ -15,6 +16,8 @@ class Main extends Sprite
 		super();
 		FlxG.fixedTimestep = false;
 		FlxSprite.defaultAntialiasing = true;
-		addChild(new FlxGame(1280, 720, PlayState, fps, fps, skipIntro));
+		CrashHandler.initialize();
+		addChild(new FlxGame(1280, 720, MainMenuState, fps, fps, skipIntro));
+		FlxG.autoPause = false;
 	}
 }

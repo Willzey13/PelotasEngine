@@ -1,0 +1,117 @@
+{
+	"animations": [
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				0
+			],
+			"anim": "idle",
+			"fps": 24,
+			"name": "Tankman Idle bloody",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				110,
+				70
+			],
+			"anim": "redheads",
+			"fps": 24,
+			"name": "redheads anim",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				48,
+				114
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "Tankman UP note bloody",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				76,
+				-151
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "Tankman DOWN note bloody",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				84,
+				-34
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "Tankman Right Note bloody",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-21,
+				-31
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "Tankman Note Left bloody",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-15,
+				-8
+			],
+			"anim": "ugh",
+			"fps": 24,
+			"name": "TANKMAN UGH instance 1",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				1,
+				36
+			],
+			"anim": "hehPrettyGood",
+			"fps": 24,
+			"name": "pretty good anim",
+			"indices": []
+		}
+	],
+	"taunts": [
+		"hey",
+		"hey",
+		"hey",
+		"hey"
+	],
+	"no_antialiasing": false,
+	"image": "characters/tankmanCaptainBloody",
+	"position": [
+		0,
+		180
+	],
+	"healthicon": "tankman-bloody",
+	"flip_x": true,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		-90,
+		100
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

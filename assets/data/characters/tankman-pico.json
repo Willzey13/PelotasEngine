@@ -1,0 +1,62 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				27,
+				115
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "tankman ARGH",
+			"indices": [],
+			"name": "tankman ARGH"
+		},
+		{
+			"offsets": [
+				60,
+				99
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "tankman beat it",
+			"indices": [],
+			"name": "tankman beat it"
+		},
+		{
+			"offsets": [
+				-48,
+				125
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "tankman laugh",
+			"indices": [],
+			"name": "tankman laugh"
+		}
+	],
+	"taunts": [
+		"hey",
+		"hey",
+		"hey",
+		"hey"
+	],
+	"no_antialiasing": false,
+	"image": "characters/tankmanPico",
+	"position": [
+		-25,
+		355
+	],
+	"healthicon": "tankman",
+	"flip_x": false,
+	"healthbar_colors": [
+		255,
+		255,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4,
+	"scale": 1
+}

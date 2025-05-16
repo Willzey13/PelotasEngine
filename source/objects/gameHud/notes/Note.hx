@@ -10,20 +10,25 @@ class Note extends FlxSprite
     public var time:Float;
     public var direction:String;
     public var isSustain:Bool;
+	public var isHoldEnd:Bool;
 	public var beenHit:Bool = false;
 	public var beenMiss:Bool = false;
 	public var isPlayer:Bool = false;
 	public var strumData:Int = 0;
 	public var offsetX:Float = 0;
 	public var sustainLength:Float = 0;
+	public var type:String = "";
+	public var beenAccurately:Bool = false;
+	public var areHolding:Bool = false;
 	public static var swagWidth:Float = 160 * 0.7;
     
-	public function new(x:Float, y:Float, direction:String, time:Float, ?isSustain:Bool = false) 
+	public function new(x:Float, y:Float, direction:String, time:Float, ?isSustain:Bool = false, ?isHoldEnd:Bool = false)
     {
         super(x, y);
         this.direction = direction;
         this.time = time;
         this.isSustain = isSustain;
+		this.isHoldEnd = isHoldEnd;
 		//this.beenHit = false;
 
         var isNotePixel = PlayState.isPixel;
@@ -65,19 +70,17 @@ class Note extends FlxSprite
 			loadGraphic(Paths.image("NOTE_hold_assets")); 
 			loadGraphic(Paths.image("NOTE_hold_assets"), true, Math.floor(width / 5 * 0.63), Math.floor(height)); 
 		
-			// Define animações para as notas sustains
 			animation.add('holdLeft', [0]);
 			animation.add('holdDown', [2]);
 			animation.add('holdUp', [4]);
 			animation.add('holdRight', [6]);
 		
-			// Define animações para o final das sustains (sustain end)
 			animation.add('holdEndLeft', [1]);
 			animation.add('holdEndDown', [3]);
 			animation.add('holdEndUp', [5]);
 			animation.add('holdEndRight', [7]);
 		
-			alpha = 0.6;
+			// alpha = 0.6; opcional
 			offsetX += (width / 2) + 20;
 
 			switch (strumData)
@@ -100,13 +103,13 @@ class Note extends FlxSprite
 			{
 				switch (strumData)
 				{
-					case 0: animation.play('holdLeft');
-					case 1: animation.play('holdDown');
-					case 2: animation.play('holdUp');
-					case 3: animation.play('holdRight');
+					case 0: animation.play(isHoldEnd ? 'holdEndLeft' : 'holdLeft');
+					case 1: animation.play(isHoldEnd ? 'holdEndDown' : 'holdDown');
+					case 2: animation.play(isHoldEnd ? 'holdEndUp' : 'holdUp');
+					case 3: animation.play(isHoldEnd ? 'holdEndRight' : 'holdRight');
 				}
 
-				scale.y *= Conductor.stepCrochet / 100 * 1.3 * PlayState.SONG.speed;
+				scale.y *= Conductor.stepCrochet / 100 * 0.75 * PlayState.SONG.speed;
 				updateHitbox();
 			}
 		}
