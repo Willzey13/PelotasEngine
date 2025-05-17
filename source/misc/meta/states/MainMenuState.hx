@@ -18,7 +18,7 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
     var optionSheet:Array<String> = [
-        'story_mode', 'freeplay', 'merch', 'donate', 'credits'
+        'story_mode', 'freeplay', 'merch', 'credits', 'options'
     ];
     
     var optionGrp:FlxTypedGroup<FlxSprite>;
@@ -40,7 +40,7 @@ class MainMenuState extends MusicBeatState
         // transIn = FlxTransitionableState.defaultTransIn;
 		// transOut = FlxTransitionableState.defaultTransOut;
 
-        var yPos = 50; // exemplo simples
+        var yPos = 30; // exemplo simples (exemplo do que mano)
         var yPosBg:Float = Math.max(0.20 - (0.05 * (optionSheet.length - 5)), 0.1);
         background = new FlxSprite(0, yPos).loadGraphic(Paths.image('mainmenu/menuBG'));
         background.scrollFactor.set(0, yPosBg);
@@ -48,10 +48,11 @@ class MainMenuState extends MusicBeatState
         background.screenCenter(X);
         add(background);
         
-        magentaBG = new FlxSprite().loadGraphic(Paths.image('mainmenu/menuDesat'));
-        magentaBG.scale.set(background.scale.x, background.scale.y);
+        magentaBG = new FlxSprite(background.x, background.y).loadGraphic(Paths.image('mainmenu/menuBGMagenta'));
+        magentaBG.scrollFactor.set(0, yPosBg);
+        magentaBG.scale.set(1.2, 1.2);
         magentaBG.visible = false;
-        magentaBG.updateHitbox();
+        magentaBG.screenCenter(X);
         add(magentaBG);
 
         camFollow = new FlxObject(0, 0, 1, 1);
@@ -76,40 +77,38 @@ class MainMenuState extends MusicBeatState
 			menuItem.updateHitbox();
 			menuItem.screenCenter(X);
 
-        	if (optionSheet.length < 5)
-		    	scr = 0;
-            else 
-                scr = (optionSheet.length - 5) * 0.135;
+            scr = optionSheet.length < 5 ? 0 : (optionSheet.length - 5) * 0.135;
         }
+
+        var theText = 'Turma Do Chaves: V1.0.0\nPelotas Engine: V0.1.0';
+        var credOnShit = new FlxText(5, 5, 0, theText, 16);
+        credOnShit.setFormat('_sans', 16, 0xFFFFFFFF, LEFT, FlxTextBorderStyle.OUTLINE, 0xFF000000); // trocar a fonte quando ela estiver no jogo
+        credOnShit.y = FlxG.height-credOnShit.height-5; // nao da para nolocar isso antes :sob:
+        credOnShit.scrollFactor.set();
+        add(credOnShit);
 
         curOptions(currentSelect);
         FlxG.camera.follow(camFollow, null, 0.06);
     }
 
+    var canChange = true;
     override function update(elapsed:Float)
     {
         super.update(elapsed);
 
-        if (controls.justPressed("up"))
-        {
-            curOptions(-1);
+        if(canChange) {
+            if (controls.justPressed("up"))
+                curOptions(-1);
+
+            if (controls.justPressed("down"))
+                curOptions(1);
+
+            if (controls.justPressed("accept"))
+                acceptSomeBigShit();
         }
 
-        if (controls.justPressed("down"))
-        {
-            curOptions(1);
-        }
-
-        if (controls.justPressed("accept"))
-        {
-            var selectedOption = optionSheet[currentSelect];
-    
-            switch (selectedOption)
-            {
-                case 'freeplay':
-                    CoolUtil.switchState(new FreeplayState());
-            }
-        }
+        for(option in optionGrp)
+            option.y = optionSheet.length >= 5 ? FlxMath.lerp(option.y, (-50*currentSelect+157*option.ID)+75, elapsed*8) : (157 * option.ID)+75; // vai todo mundo se fuder
     }
 
     public function curOptions(curOption:Int):Void
@@ -126,7 +125,7 @@ class MainMenuState extends MusicBeatState
                 {
                     item.animation.play('selected');
                     item.centerOffsets();
-                    camFollow.setPosition(item.getGraphicMidpoint().x, item.getGraphicMidpoint().y);
+                    camFollow.setPosition(item.getGraphicMidpoint().x, optionSheet.length >= 4 ? (-48*currentSelect+160*item.ID)+185+(Math.abs(5*optionSheet.length-5)) : background.getGraphicMidpoint().y); // sou bom em matematica? talvez (nao)
                 }
                 else
                 {
@@ -135,5 +134,24 @@ class MainMenuState extends MusicBeatState
                 }
             }
         }
+    }
+
+    public function acceptSomeBigShit()
+    {
+        var selectedOption = optionSheet[currentSelect];
+        canChange = false;
+
+        FlxFlicker.flicker(optionGrp.members[currentSelect], 0.75, 0.1, true); // colocar para desabilitar com quando desativar o flash
+        FlxFlicker.flicker(magentaBG, 0.75, 0.1, false, false, function(a:FlxFlicker) {
+            switch (selectedOption)
+            {
+                case 'freeplay': CoolUtil.switchState(new FreeplayState());
+                case 'merch': FlxG.openURL('https://needlejuicerecords.com/pages/friday-night-funkin'); canChange = true; return;
+                default: canChange = true; return;
+            }
+
+            for(item in optionGrp)
+                FlxTween.tween(item, {alpha: 0}, 0.5);
+        });
     }
 }
