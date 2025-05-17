@@ -18,7 +18,7 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
     var optionSheet:Array<String> = [
-        'story_mode', 'freeplay', 'merch', 'credits', 'options'
+        'story_mode', 'freeplay', 'merch', 'merch', 'credits', 'options'
     ];
     
     var optionGrp:FlxTypedGroup<FlxSprite>;
@@ -73,11 +73,10 @@ class MainMenuState extends MusicBeatState
             menuItem.ID = i;
 			optionGrp.add(menuItem);
 			
+            scr = optionSheet.length < 5 ? 0 : (optionSheet.length - 5) * 0.135;
 			menuItem.scrollFactor.set(0, scr);
 			menuItem.updateHitbox();
 			menuItem.screenCenter(X);
-
-            scr = optionSheet.length < 5 ? 0 : (optionSheet.length - 5) * 0.135;
         }
 
         var theText = 'Turma Do Chaves: V1.0.0\nPelotas Engine: V0.1.0';
