@@ -18,7 +18,7 @@ using StringTools;
 class MainMenuState extends MusicBeatState
 {
     var optionSheet:Array<String> = [
-        'story_mode', 'freeplay', 'merch', 'merch', 'credits', 'options'
+        'story_mode', 'freeplay', 'merch', 'credits', 'options'
     ];
     
     var optionGrp:FlxTypedGroup<FlxSprite>;
@@ -146,6 +146,7 @@ class MainMenuState extends MusicBeatState
             {
                 case 'freeplay': CoolUtil.switchState(new FreeplayState());
                 case 'merch': FlxG.openURL('https://needlejuicerecords.com/pages/friday-night-funkin'); canChange = true; return;
+                case 'credits': CoolUtil.switchState(new CreditsState());
                 default: canChange = true; return;
             }
 
