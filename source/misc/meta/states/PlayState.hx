@@ -28,6 +28,7 @@ import objects.gameHud.CustomBar;
 import objects.gameHud.notes.Note;
 import objects.gameHud.notes.NoteSplash;
 import objects.gameHud.notes.NoteStrum;
+import misc.meta.substates.PauseSubState;
 import sys.FileSystem;
 
 class PlayState extends MusicBeatState
@@ -86,13 +87,26 @@ class PlayState extends MusicBeatState
 
 		ScriptManagerHaxe.clear();
 
+		var bfX:Int = 600;
+		var bfY:Int = 500;
+		var dadX:Int = 200;
+		var dadY:Int = 100;
+
 		curStage = SONG.stage;
 		switch (curStage)
 		{
 			case 'stage':
-				var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.RED);
-				add(bg);
+				defaultCamZoom = 0.7;
 
+				var stageback = new FlxSprite(100, -100).loadGraphic('assets/images/defaultBg/stageback.png');
+				add(stageback);
+
+				var stagefront = new FlxSprite(100, 500).loadGraphic('assets/images/defaultBg/stagefront.png');
+				add(stagefront);
+
+				bfX = 1400;
+				bfY = 450;
+				dadX = 400;
 			case 'military-stress':
 				defaultCamZoom = 0.85;
 				var bg = new FlxSprite().loadGraphic('assets/week7/images/pico/bg.png');
@@ -105,10 +119,10 @@ class PlayState extends MusicBeatState
 		}
 
 		camGame.zoom = defaultCamZoom;
-		dad = new Character(200, 100, SONG.player2, true);
+		dad = new Character(dadX, dadY, SONG.player2, true);
 		add(dad);
 
-		boyfriend = new Character(600, 100, SONG.player1, false);
+		boyfriend = new Character(bfX, bfY, SONG.player1, false);
 		add(boyfriend);
 
 		var strumY = downscroll ? (FlxG.height - 150) : -10;
@@ -161,7 +175,7 @@ class PlayState extends MusicBeatState
         add(notes);
 		add(noteSplashes);
 
-		scoreText = new FlxText(0, FlxG.height * 0.89 + 30, 500, "Score: 0 | Accuracy: 00.0% | Misses: 0");
+		scoreText = new FlxText(0, FlxG.height * 0.89 + 30, 0, "Score: 0 | Accuracy: 00.0% | Misses: 0"); //o width no 500 faz os misses ficarem fudidos will VAI TOMA NO CU
 		scoreText.screenCenter(X);
 		scoreText.cameras = [camHUD];
         scoreText.setFormat(Paths.getFont('vcr', 'ttf'), 20, FlxColor.WHITE, CENTER, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
@@ -406,6 +420,10 @@ class PlayState extends MusicBeatState
 			instrumental.pause();
 			vocals.pause();
 			vocalsP2.pause();
+		} else if (!paused) {
+			instrumental.resume();
+			vocals.resume();
+			if (vocalsP2 != null) vocalsP2.resume();
 		}
 	}
 
@@ -421,6 +439,17 @@ class PlayState extends MusicBeatState
 		subunspawnNotes = [];
 
 		CoolUtil.switchState(new FreeplayState());
+	}
+
+	function openPause()
+	{
+		instrumental.pause();
+		vocals.pause();
+		if (vocalsP2 != null)
+			vocalsP2.pause();
+
+		paused = true;
+		openSubState(new PauseSubState());
 	}
 
 	function resyncVocals():Void
@@ -466,8 +495,18 @@ class PlayState extends MusicBeatState
 		if (FlxG.keys.justPressed.B && (isFreeplay || isChartingMode))
             isBotplay = !isBotplay;
 
-		if (controls.justPressed('back'))
-			quitSong();
+        if (FlxG.keys.justPressed.ESCAPE)
+			openPause();
+
+		if(paused) {
+			instrumental.pause();
+			vocals.pause();
+			vocalsP2.pause();
+		} else if (!paused) {
+			instrumental.resume();
+			vocals.resume();
+			if (vocalsP2 != null) vocalsP2.resume();
+		}
 
 		ScriptManagerHaxe.call("update", { playState: this, args: [elapsed] });
 		if (camZooming)
@@ -478,9 +517,6 @@ class PlayState extends MusicBeatState
 			if (camHUD != null && camHUD.zoom > 1)
 				camHUD.zoom = FlxMath.lerp(camHUD.zoom, 1, elapsed * 6);
 		}
-
-		if (FlxG.keys.justPressed.SPACE)
-			paused = true;
 
 		pressed = [
 			controls.pressed("left"),
@@ -739,7 +775,7 @@ class PlayState extends MusicBeatState
 		scoreText.screenCenter(X);
 	}
 
-	public var paused:Bool = false;
+	public static var paused:Bool = false;
 	public var startedCountdown:Bool = true;
 	public var startingSong:Bool = true;
 	var zoomLevel:Float = 1.0;

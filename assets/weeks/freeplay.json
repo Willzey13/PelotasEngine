@@ -18,5 +18,9 @@
   { 
     "song": "darnell", 
     "difficulties": ["erect"] 
+  },
+  { 
+    "song": "depredation", 
+    "difficulties": ["hard"] 
   }
 ]
