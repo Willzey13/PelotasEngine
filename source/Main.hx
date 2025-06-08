@@ -10,7 +10,7 @@ import openfl.display.Sprite;
 class Main extends Sprite
 {
 	var skipIntro:Bool = true;
-	public var fps:Int = 120;
+	public var fps:Int = 60;
 	public function new()
 	{
 		super();
@@ -18,6 +18,6 @@ class Main extends Sprite
 		FlxSprite.defaultAntialiasing = true;
 		CrashHandler.initialize();
 		addChild(new FlxGame(1280, 720, MainMenuState, fps, fps, skipIntro));
-		FlxG.autoPause = false;
+		FlxG.autoPause = true;
 	}
 }

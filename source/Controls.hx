@@ -16,8 +16,8 @@ class Controls
         register("right", new InputBind([FlxKey.RIGHT, FlxKey.D], [FlxPad.DPAD_RIGHT]));
         register("up", new InputBind([FlxKey.UP, FlxKey.W], [FlxPad.DPAD_UP]));
         register("down", new InputBind([FlxKey.DOWN, FlxKey.S], [FlxPad.DPAD_DOWN]));
-        register("accept", new InputBind([FlxKey.ENTER, FlxKey.Z], [FlxPad.X]));
-        register("back", new InputBind([FlxKey.BACKSPACE, FlxKey.X], [FlxPad.BACK]));
+        register("accept", new InputBind([FlxKey.ENTER, FlxKey.Z], [FlxPad.A]));
+        register("back", new InputBind([FlxKey.BACKSPACE, FlxKey.X], [FlxPad.B]));
     }
 
     public function register(name:String, bind:InputBind):Void

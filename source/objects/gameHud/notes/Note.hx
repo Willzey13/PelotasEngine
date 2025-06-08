@@ -2,8 +2,8 @@ package objects.gameHud.notes;
 
 import data.Conductor;
 import flixel.FlxSprite;
-import misc.meta.states.PlayState;
 import flixel.graphics.frames.FlxAtlasFrames;
+import misc.meta.states.PlayState;
 
 class Note extends FlxSprite 
 {
@@ -68,7 +68,7 @@ class Note extends FlxSprite
 		if (isSustain)
 		{
 			loadGraphic(Paths.image("NOTE_hold_assets")); 
-			loadGraphic(Paths.image("NOTE_hold_assets"), true, Math.floor(width / 5 * 0.63), Math.floor(height)); 
+			loadGraphic(Paths.image("NOTE_hold_assets"), true, Math.floor(width / 5 * 0.63), Math.floor(height * 0.99)); 
 		
 			animation.add('holdLeft', [0]);
 			animation.add('holdDown', [2]);
@@ -115,6 +115,13 @@ class Note extends FlxSprite
 		}
 		x += offsetX;
     }
+
+	public function resetNotes()
+	{
+		beenHit = false;
+		beenMiss = false;
+		sustainLength = 0;
+	}
 
 	public function onNoteOffset()
 		return time + Conductor.offset - Conductor.songPosition;

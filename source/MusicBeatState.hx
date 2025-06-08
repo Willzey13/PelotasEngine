@@ -9,6 +9,7 @@ import flixel.addons.ui.FlxUIState;
 import flixel.math.FlxRect;
 import flixel.util.FlxTimer;
 import misc.CustomFadeTransition;
+import misc.meta.ScreenshotHelper;
 
 class MusicBeatState extends FlxUIState
 {
@@ -39,6 +40,9 @@ class MusicBeatState extends FlxUIState
 
 		updateCurStep();
 		updateBeat();
+
+		if (FlxG.keys.justPressed.F2)
+			ScreenshotHelper.takeScreenshot();
 
 		if (oldStep != curStep && curStep > 0)
 			stepHit();

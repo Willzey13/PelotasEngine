@@ -1,0 +1,22 @@
+[
+  { 
+    "song": "bopeebo", 
+    "difficulties": ["erect"] 
+  },
+  { 
+    "song": "high", 
+    "difficulties": ["erect"] 
+  },
+  { 
+    "song": "stress-pico", 
+    "difficulties": ["hard"] 
+  },
+  { 
+    "song": "manifest", 
+    "difficulties": ["hard"] 
+  },
+  { 
+    "song": "darnell", 
+    "difficulties": ["erect"] 
+  }
+]

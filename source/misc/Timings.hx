@@ -16,19 +16,21 @@ class Judgement {
     public var timing:Int;
     public var health:Float;
     public var accuracy:Int;
+    public var score:Int = 350;
     public var breakCombo:Bool = false;
 
     public static var list:Array<Judgement> = [
         new Judgement({name: "sick", timing: Timings.sickHitWindow, accuracy: 100, health: 2.5}),
-        new Judgement({name: "good", timing: Timings.goodHitWindow, accuracy: 85, health: 1}),
-        new Judgement({name: "bad", timing: Timings.badHitWindow, accuracy: 60, health: -2.5}),
-        new Judgement({name: "shit", timing: Timings.shitHitWindow, accuracy: 40, health: -4, breakCombo: true})
+        new Judgement({name: "good", timing: Timings.goodHitWindow, accuracy: 85, health: 1, score: 200}),
+        new Judgement({name: "bad", timing: Timings.badHitWindow, accuracy: 60, health: -2.5, score: 100}),
+        new Judgement({name: "shit", timing: Timings.shitHitWindow, accuracy: 40, health: -4, breakCombo: true, score: 50})
     ];
     
-    public function new(data:{name:String, timing:Int, health:Float, accuracy:Int, ?breakCombo:Bool}) {
+    public function new(data:{name:String, timing:Int, health:Float, accuracy:Int, ?score:Int, ?breakCombo:Bool}) {
         name = data.name;
         timing = data.timing;
         health = data.health;
+        score = data.score;
         accuracy = data.accuracy;
         if (data.breakCombo != null) {
             breakCombo = data.breakCombo;
@@ -44,5 +46,23 @@ class Judgement {
                 max = j.timing;
         }
         return max;
+    }
+
+    public static function getJudgementByTiming(timing:Float):String {
+        for (j in list) {
+            if (timing <= j.timing) {
+                return j.name;
+            }
+        }
+        return "miss";
+    }
+
+    public static function getJudgement(timing:Float):Judgement {
+        for (j in list) {
+            if (timing <= j.timing) {
+                return j;
+            }
+        }
+        return null;
     }
 }

@@ -2,9 +2,12 @@ package objects;
 
 import data.Conductor;
 import flixel.FlxSprite;
+import flixel.animation.FlxAnimationController;
+import flixel.math.FlxPoint;
 import haxe.Json;
 import openfl.utils.Assets;
-import flixel.animation.FlxAnimationController;
+import sys.FileSystem;
+import sys.io.File;
 
 class Character extends FlxSprite
 {
@@ -13,31 +16,55 @@ class Character extends FlxSprite
     public var idleAnim:String = "idle";
     public var isOpponent:Bool = false;
     public var specialAnim:Bool = false;
+    public var curChar:String = 'bf';
+    public var cameraPosition:FlxPoint = new FlxPoint(0, 0);
 
     public function new(x:Float, y:Float, character:String, isOpponent:Bool = false) {
         super(x, y);
         this.isOpponent = isOpponent;
+        this.curChar = character;
         loadCharacter(character);
     }
 
     public function loadCharacter(name:String):Void 
     {
-        var path:String = 'assets/data/characters/$name.json';
-        var rawJson:String = sys.io.File.getContent(path);
-        var json:Dynamic = Json.parse(rawJson);
+        var modPath:String = 'mods/data/characters/$name.json';
+        var assetPath:String = 'assets/data/characters/$name.json';
+        var rawJson:String;
 
+        if (FileSystem.exists(modPath)) {
+            rawJson = File.getContent(modPath);
+        } else if (FileSystem.exists(assetPath)) {
+            rawJson = File.getContent(assetPath);
+        } else {
+            throw 'Arquivo de personagem não encontrado: ' + name;
+        }
+
+        var json:Dynamic = Json.parse(rawJson);
         var isVersion1:Bool = Reflect.hasField(json, "version");
         var assetPath:String = isVersion1 ? json.assetPath : json.image;
         frames = Paths.getSparrowAtlas(assetPath);
         var anims:Array<Dynamic> = json.animations;
 
-        // <- AQUI ENTRA O FLIPX
         if (Reflect.hasField(json, "flipX")) {
-            this.flipX = json.flipX;
+            if (!isOpponent)
+                this.flipX != json.flipX;
+            else
+                this.flipX = json.flipX;
         } else if (Reflect.hasField(json, "flip_x")) {
-            this.flipX = json.flip_x;
+            if (!isOpponent)
+                this.flipX != json.flip_x;
+            else
+                this.flipX = json.flip_x;
         } else {
             this.flipX = isOpponent;
+        }
+
+        if (Reflect.hasField(json, "camera_position") && json.camera_position is Array && (json.camera_position.length >= 2)) {
+            var camPos:Array<Float> = json.camera_position;
+            cameraPosition.set(camPos[0], camPos[1]);
+        } else {
+            cameraPosition.set(0, 0);
         }
 
         for (anim in anims) {
@@ -86,7 +113,7 @@ class Character extends FlxSprite
         if (CoolUtil.startsWith(animation.curAnim.name, 'sing'))
         {
             holdTimer += elapsed;
-            if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1)) * 4) // depois de 4 steps
+            if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1)) * 4) // after of 4 steps
             {
                 charDance();
                 holdTimer = 0;

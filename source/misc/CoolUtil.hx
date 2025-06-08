@@ -32,6 +32,18 @@ class CoolUtil
 		CoolUtil.switchState(FlxG.state);
 	}
 
+    public static function floorDecimal(value:Float, decimals:Int):Float {
+        var mult = Math.pow(10, decimals);
+        return Math.floor(value * mult) / mult;
+    }
+
+    public static function formatNumberWithCommas(number:Int):String
+    {
+        var str = Std.string(number);
+        var regex = ~/(\d)(?=(\d{3})+(?!\d))/g;
+        return regex.replace(str, "$1,");
+    }
+
 	// -------- StringTools reimplementado --------
 
     public static function trim(str:String):String {
