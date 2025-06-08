@@ -81,6 +81,7 @@ class FreeplayState extends MusicBeatState
             var pos = i - select;
             var absPos = Math.abs(pos);
             var direction = pos < 0 ? -1 : 1;
+            var flip = (absPos % 10 >= 5) ? -1 : 1;
 
             text.y = Math.abs((FlxG.height / 2) + pos * 60);
             text.x = Math.abs((FlxG.width / 2) + flip * direction * absPos * 25);
