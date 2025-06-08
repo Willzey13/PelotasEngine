@@ -3,6 +3,8 @@ package misc.meta.states;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.FlxSprite;
+import flixel.FlxObject;
 import flixel.effects.FlxFlicker;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
