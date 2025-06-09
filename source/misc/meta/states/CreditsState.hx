@@ -13,6 +13,7 @@ import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
+import misc.meta.states.MainMenuState;
 
 // import js.html.Client;
 using StringTools;
@@ -22,7 +23,8 @@ class CreditsState extends MusicBeatState
     var credArray:Array<Array<Dynamic>> = [ // nome | icone | descricao | cor | url
         ['Pelotas Engine Team', 'none'],
         ['Willzinhu', 'will', 'Main coder', 0xFFFF7700, 'https://x.com/wilzey13lol'],
-        ['JDaniel Aleatorio', 'jdaniel', 'Another coder?', 0xFF21D817, 'https://www.youtube.com/@JDanielAleatorio']
+        ['JDaniel Aleatorio', 'jdaniel', 'Another coder?', 0xFF21D817, 'https://www.youtube.com/@JDanielAleatorio'],
+        ['Peanut Cut', 'jdaniel', 'Damn 3 fucking coders', 0xFFF4FF58, 'https://x.com/peanut_cut']
     ];
 
     var background:FlxSprite;
@@ -87,6 +89,9 @@ class CreditsState extends MusicBeatState
 
         if(controls.justPressed('accept'))
             FlxG.openURL(credArray[selectingWho][4]);
+
+        if(controls.justPressed('escape'))
+            CoolUtil.switchState(new MainMenuState());
 
         box.scale.set(FlxMath.lerp(box.scale.x, text.width+10, elapsed*8), FlxMath.lerp(box.scale.y, text.height+10, elapsed*8));
         box.updateHitbox();

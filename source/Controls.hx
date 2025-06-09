@@ -18,6 +18,7 @@ class Controls
         register("down", new InputBind([FlxKey.DOWN, FlxKey.S], [FlxPad.DPAD_DOWN]));
         register("accept", new InputBind([FlxKey.ENTER, FlxKey.Z], [FlxPad.A]));
         register("back", new InputBind([FlxKey.BACKSPACE, FlxKey.X], [FlxPad.B]));
+        register("escape", new InputBind([FlxKey.ESCAPE, FlxKey.C], [FlxPad.X])); //vtnc colocou "back" mas não o esc
     }
 
     public function register(name:String, bind:InputBind):Void

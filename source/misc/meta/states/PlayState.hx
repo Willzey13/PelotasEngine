@@ -98,15 +98,15 @@ class PlayState extends MusicBeatState
 			case 'stage':
 				defaultCamZoom = 0.7;
 
-				var stageback = new FlxSprite(100, -100).loadGraphic('assets/images/defaultBg/stageback.png');
+				var stageback = new FlxSprite(-10500, -100).loadGraphic('assets/images/defaultBg/stageback.png');
 				add(stageback);
 
-				var stagefront = new FlxSprite(100, 500).loadGraphic('assets/images/defaultBg/stagefront.png');
+				var stagefront = new FlxSprite(-100, 740).loadGraphic('assets/images/defaultBg/stagefront.png');
 				add(stagefront);
 
 				bfX = 1400;
 				bfY = 450;
-				dadX = 400;
+				dadX = 500;
 			case 'military-stress':
 				defaultCamZoom = 0.85;
 				var bg = new FlxSprite().loadGraphic('assets/week7/images/pico/bg.png');
@@ -125,7 +125,7 @@ class PlayState extends MusicBeatState
 		boyfriend = new Character(bfX, bfY, SONG.player1, false);
 		add(boyfriend);
 
-		var strumY = downscroll ? (FlxG.height - 150) : -10;
+		var strumY = downscroll ? (FlxG.height - 100) : -10;
 		playerStrumline = new FlxTypedGroup<NoteStrum>();
 		playerStrumline.camera = camHUD;
 		var directions = ["left", "down", "up", "right"];
