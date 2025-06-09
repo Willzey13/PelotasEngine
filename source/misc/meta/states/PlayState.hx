@@ -87,7 +87,7 @@ class PlayState extends MusicBeatState
 
 		ScriptManagerHaxe.clear();
 
-		var bfX:Int = 600;
+		var bfX:Int = 600; // sistema de x e y placeholder ok o will vai fazer algo melhor com json
 		var bfY:Int = 500;
 		var dadX:Int = 200;
 		var dadY:Int = 100;
@@ -98,14 +98,17 @@ class PlayState extends MusicBeatState
 			case 'stage':
 				defaultCamZoom = 0.7;
 
-				var stageback = new FlxSprite(-10500, -100).loadGraphic('assets/images/defaultBg/stageback.png');
+				var stageback = new FlxSprite(-200, -100).loadGraphic('assets/images/defaultBg/stageback.png');
+				stageback.scale.set(1.15, 1.15);
 				add(stageback);
 
 				var stagefront = new FlxSprite(-100, 740).loadGraphic('assets/images/defaultBg/stagefront.png');
+				stagefront.scale.set(1.15, 1.15);
 				add(stagefront);
 
 				bfX = 1400;
-				bfY = 450;
+				bfY = -200;
+				dadY = 200;
 				dadX = 500;
 			case 'military-stress':
 				defaultCamZoom = 0.85;
@@ -113,8 +116,14 @@ class PlayState extends MusicBeatState
 				bg.scale.set(1.15, 1.15);
 				add(bg);
 
+				bfX = 1400;
+				bfY = -200;
+				dadY = 200;
+				dadX = 500;
+
 			default:
 				var bg = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.GRAY);
+				bg.scale.set(7, 7);
 				add(bg);
 		}
 

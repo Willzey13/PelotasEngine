@@ -1,5 +1,6 @@
 package misc.meta.substates;
 
+import haxe.macro.Expr.FieldType;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxObject;
@@ -23,6 +24,7 @@ class PauseSubState extends MusicBeatSubstate
 	static var pauseItems:Array<String> = ['Resume', 'Restart', 'Exit' /*, 'Open Chart Editor'*/]; //meu pau caiu
     var pauseGrp:FlxTypedGroup<FlxText>; //talvez eu faça um array dps slakklkkkkkkkkkkkkkk
 
+    var songName:FlxText;
     var curSelected:Int = 0;
     var blackBg:FlxSprite;
 
@@ -49,6 +51,11 @@ class PauseSubState extends MusicBeatSubstate
                 pause.cameras = [pauseCam];
                 pauseGrp.add(pause);
             }
+
+        songName = new FlxText(700, 50, 0, 'Song: ${PlayState.SONG.song.toLowerCase()}\nDifficulty: ${PlayState.diff.toLowerCase()}', 32);
+        songName.setFormat(Paths.getFont('vcr', 'ttf'), 50, 0xFFFFFFFF, "center");
+        songName.cameras = [pauseCam];
+        add(songName);
 
         changeItem();
     }
