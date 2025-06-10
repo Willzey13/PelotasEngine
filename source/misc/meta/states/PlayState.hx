@@ -560,6 +560,7 @@ class PlayState extends MusicBeatState
 
 		if(paused) {
 			instrumental.pause();
+<<<<<<< HEAD
 			if (vocals != null)
 				vocals.pause();
 			if (vocalsP2 != null)
@@ -568,6 +569,13 @@ class PlayState extends MusicBeatState
 			instrumental.resume();
 			if (vocals != null)
 				vocals.resume();
+=======
+			vocals.pause();
+			vocalsP2.pause();
+		} else if (!paused) {
+			instrumental.resume();
+			vocals.resume();
+>>>>>>> 340bf201c8bdc97b31a9745ef301dc2135b4679c
 			if (vocalsP2 != null) vocalsP2.resume();
 		}
 
