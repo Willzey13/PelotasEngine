@@ -1,0 +1,13 @@
+{
+  "stages": {
+    "default": {
+      "script": "scripts/noloader/stage.hx",
+      "gfVisible": true,
+      "charsPosition": {
+        "bf": [100.0, 200.0],
+        "dad": [300.0, 200.0],
+        "gf": [200, 140]
+      }
+    }
+  }
+}

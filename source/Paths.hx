@@ -24,7 +24,12 @@ class Paths
 
     public static function getData(direction:String, key:String, ?library:String)
     {
-        return getPath('data/songs/$direction/$key.json');
+        return getPath('data/songs/$direction/$key.json', library);
+    }
+
+    public static function getTextFromFile(key:String, ?library:String)
+    {
+        return getPath('$key', library);
     }
 
     public static function getFont(font:String, ?format:String = 'ttf', ?library:String = '')

@@ -61,11 +61,7 @@ class CustomFadeTransition extends MusicBeatSubstate
 			ease: FlxEase.linear});
 		}
 
-		if(nextCamera != null) {
-			transBlack.cameras = [nextCamera];
-			transGradient.cameras = [nextCamera];
-		}
-		nextCamera = null;
+		nextCamera = FlxG.cameras.list[FlxG.cameras.list.length - 1];
 	}
 
 	override function update(elapsed:Float) {

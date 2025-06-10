@@ -2,13 +2,19 @@ package misc;
 
 import flixel.math.FlxMath;
 
-class Timings
-{
-	public static var sickHitWindow:Int = 45;
-    public static var goodHitWindow:Int = 90;
-    public static var badHitWindow:Int = 135;
-    public static var shitHitWindow:Int = 180;
+typedef TimingValues = {
+	var sick:Int;
+	var good:Int;
+	var bad:Int;
+	var shit:Int;
 }
+
+final Timings:TimingValues = {
+	sick: 45,
+	good: 90,
+	bad: 135,
+	shit: 180
+};
 
 @:structInit
 class Judgement {
@@ -20,10 +26,10 @@ class Judgement {
     public var breakCombo:Bool = false;
 
     public static var list:Array<Judgement> = [
-        new Judgement({name: "sick", timing: Timings.sickHitWindow, accuracy: 100, health: 2.5}),
-        new Judgement({name: "good", timing: Timings.goodHitWindow, accuracy: 85, health: 1, score: 200}),
-        new Judgement({name: "bad", timing: Timings.badHitWindow, accuracy: 60, health: -2.5, score: 100}),
-        new Judgement({name: "shit", timing: Timings.shitHitWindow, accuracy: 40, health: -4, breakCombo: true, score: 50})
+        new Judgement({name: "sick", timing: Timings.sick, accuracy: 100, health: 2.5, score: 350}),
+        new Judgement({name: "good", timing: Timings.good, accuracy: 85, health: 1, score: 200}),
+        new Judgement({name: "bad", timing: Timings.bad, accuracy: 60, health: -2.5, score: 100}),
+        new Judgement({name: "shit", timing: Timings.shit, accuracy: 40, health: -4, breakCombo: true, score: 50})
     ];
     
     public function new(data:{name:String, timing:Int, health:Float, accuracy:Int, ?score:Int, ?breakCombo:Bool}) {
@@ -36,6 +42,11 @@ class Judgement {
             breakCombo = data.breakCombo;
         }
     }
+
+    public static function getScoreByTiming(timing:Float):Int { // get score - meu pinto caiu
+		var judgement = getJudgement(timing);
+		return (judgement != null) ? judgement.score : 0;
+	}
 
     public static function worstTiming():Float
     {

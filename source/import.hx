@@ -5,3 +5,6 @@ import flixel.tweens.FlxEase;
 
 // ================ Imports Engine ================ 
 import misc.CoolUtil;
+
+// ================ DESGRAÇA Imports ================ 
+import misc.scripts.ScriptManagerHaxe;

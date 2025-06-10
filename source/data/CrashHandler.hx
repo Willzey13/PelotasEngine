@@ -9,207 +9,224 @@ import sys.io.File;
 
 using StringTools;
 
-/**
- * A custom crash handler that writes to a log file and displays a message box.
- */
 @:nullSafety
 class CrashHandler {
-  public static final LOG_FOLDER = 'logs';
+	public static final LOG_FOLDER = 'logs';
 
-  public static var errorSignal(default, null):FlxTypedSignal<String->Void> = new FlxTypedSignal<String->Void>();
-  public static var criticalErrorSignal(default, null):FlxTypedSignal<String->Void> = new FlxTypedSignal<String->Void>();
+	public static var errorSignal(default, null):FlxTypedSignal<String->Void> = new FlxTypedSignal<String->Void>();
+	public static var criticalErrorSignal(default, null):FlxTypedSignal<String->Void> = new FlxTypedSignal<String->Void>();
 
-  public static function initialize():Void {
-    trace('[LOG] Enabling standard uncaught error handler...');
-    Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
+	static var hasCrashed = false;
 
-    #if cpp
-    trace('[LOG] Enabling C++ critical error handler...');
-    untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
-    #end
-  }
+	public static function initialize():Void {
+		trace('[LOG] Enabling standard uncaught error handler...');
+    openfl.Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
 
-  static function onUncaughtError(error:UncaughtErrorEvent):Void {
-    try {
-      errorSignal.dispatch(generateErrorMessage(error));
+		#if cpp
+		trace('[LOG] Enabling C++ critical error handler...');
+		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
+		#end
+	}
 
-      #if sys
-      logError(error);
-      #end
+	static function onUncaughtError(error:UncaughtErrorEvent):Void {
+		if (hasCrashed) return;
+		hasCrashed = true;
 
-      displayError(error);
-    } catch (e:Dynamic) {
-      trace('Error while handling crash: ' + e);
-    }
+		try {
+			var message = generateErrorMessage(error);
+			errorSignal.dispatch(message);
 
-    #if sys
-    Sys.sleep(1);
-    openfl.Lib.application.window.close();
-    #end
-  }
+			#if sys
+			logErrorMessage(message);
+			#end
 
-  static function onCriticalError(message:String):Void {
-    try {
-      criticalErrorSignal.dispatch(message);
+			displayErrorMessage(message);
+		} catch (e:Dynamic) {
+			trace('Error while handling crash: ' + e);
+		}
 
-      #if sys
-      logErrorMessage(message, true);
-      #end
+		#if sys
+		Sys.sleep(1);
+		openfl.Lib.application.window.close();
+		#end
+	}
 
-      displayErrorMessage(message);
-    } catch (e:Dynamic) {
-      trace('Error while handling crash: $e');
-      trace('Message: $message');
-    }
+	static function onCriticalError(message:String):Void {
+		if (hasCrashed) return;
+		hasCrashed = true;
 
-    #if sys
-    Sys.sleep(1);
-    openfl.Lib.application.window.close();
-    #end
-  }
+		try {
+			criticalErrorSignal.dispatch(message);
 
-  static function displayError(error:UncaughtErrorEvent):Void {
-    displayErrorMessage(generateErrorMessage(error));
-  }
+			#if sys
+			logErrorMessage(message, true);
+			#end
 
-  static function displayErrorMessage(message:String):Void {
-    lime.app.Application.current.window.alert(message, "Fatal Uncaught Exception");
-  }
+			displayErrorMessage(message);
+		} catch (e:Dynamic) {
+			trace('Error while handling critical crash: $e');
+		}
 
-  #if sys
-  static function logError(error:UncaughtErrorEvent):Void {
-    logErrorMessage(generateErrorMessage(error));
-  }
+		#if sys
+		Sys.sleep(1);
+		openfl.Lib.application.window.close();
+		#end
+	}
 
-  static function logErrorMessage(message:String, critical:Bool = false):Void {
-    var logDir = haxe.io.Path.join([Sys.getCwd(), LOG_FOLDER]);
-    if (!sys.FileSystem.exists(logDir)) {
-      sys.FileSystem.createDirectory(logDir);
-    }
+	static function displayErrorMessage(message:String):Void {
+		lime.app.Application.current.window.alert(message, "Fatal Uncaught Exception");
+	}
 
-    var safeDate = Date.now().toString().replace(":", "-").replace(":", "-").replace(" ", "_");
-    var filename = haxe.io.Path.join([logDir, 'crash${critical ? "-critical" : ""}-$safeDate.log']);
+	#if sys
+	static function logErrorMessage(message:String, critical:Bool = false):Void {
+		var logDir = haxe.io.Path.join([Sys.getCwd(), LOG_FOLDER]);
+		if (!sys.FileSystem.exists(logDir)) {
+			sys.FileSystem.createDirectory(logDir);
+		}
 
-    sys.io.File.saveContent(filename, buildCrashReport(message));
-  }
-  #end
+		var safeDate = Date.now().toString().replace(":", "-").replace(" ", "_");
+		var filename = haxe.io.Path.join([logDir, 'crash${critical ? "-critical" : ""}-$safeDate-${Std.random(10000)}.log']);
 
-  static function buildCrashReport(message:String):String {
-    var fullContents:String = '=====================\n';
-    fullContents += ' Funkin Crash Report\n';
-    fullContents += '=====================\n\n';
+		sys.io.File.saveContent(filename, buildCrashReport(message));
+	}
+	#end
 
-    fullContents += buildSystemInfo();
-    fullContents += '\n\n=====================\n\n';
+	static function buildCrashReport(message:String):String {
+		var report = '=====================\n';
+		report += ' Funkin Crash Report\n';
+		report += '=====================\n\n';
+		report += buildSystemInfo();
+		report += '\n\n=====================\n\n';
 
-    var currentState:String = 'No state loaded';
-    if (FlxG.state != null) {
-      var currentStateCls:Null<Class<Dynamic>> = Type.getClass(FlxG.state);
-      if (currentStateCls != null) {
-        currentState = Type.getClassName(currentStateCls) ?? 'No state loaded';
-      }
-    }
+		var currentState:String = 'No state loaded';
+		if (FlxG.state != null) {
+			var currentStateCls:Null<Class<Dynamic>> = Type.getClass(FlxG.state);
+			if (currentStateCls != null) {
+				currentState = Type.getClassName(currentStateCls);
+			}
+		}
 
-    fullContents += 'Flixel Current State: ${currentState}\n\n';
-    fullContents += '=====================\n\n';
-    fullContents += 'Haxelibs: \n\n';
-    fullContents += '=====================\n\n';
-    fullContents += 'Loaded mods: \n\n';
-    fullContents += '=====================\n\n';
-    fullContents += message;
-    fullContents += '\n';
+		report += 'Flixel Current State: $currentState\n\n';
+		report += '=====================\n\n';
+		report += 'Haxelibs: (List manually if needed)\n\n';
+		report += '=====================\n\n';
+		report += 'Loaded mods: (List manually if needed)\n\n';
+		report += '=====================\n\n';
+		report += message + '\n';
 
-    return fullContents;
-  }
+		return report;
+	}
 
-  public static function buildSystemInfo():String {
-    var fullContents = 'Generated by: Willzinhu\n';
-    fullContents += 'System timestamp: ${Date.now().toString()}\n';
-    var driverInfo = FlxG?.stage?.context3D?.driverInfo ?? 'N/A';
-    fullContents += 'Driver info: ${driverInfo}\n';
-    #if sys
-    fullContents += 'Platform: ${Sys.systemName()}\n';
-    #end
-    fullContents += 'Render method: ${renderMethod()}\n\n';
-    fullContents += '=====================\n\n';
-    return fullContents;
-  }
+	public static function buildSystemInfo():String {
+		var info = 'Generated by: Willzinhu\n';
+		info += 'System timestamp: ${Date.now().toString()}\n';
+		info += 'Driver info: ${FlxG?.stage?.context3D?.driverInfo ?? "N/A"}\n';
 
-  static function generateErrorMessage(error:UncaughtErrorEvent):String {
-    var errorMessage:String = "";
-    var callStack:Array<haxe.CallStack.StackItem> = haxe.CallStack.exceptionStack(true);
+		#if sys
+		info += 'Platform: ${Sys.systemName()}\n';
+		#if cpp
+		try {
+			final currentMem = cpp.vm.Gc.memInfo(cpp.vm.Gc.MEM_INFO_USAGE); // aq
+			info += 'Memory usage: ${currentMem} bytes\n';
+		} catch (e) {
+			info += 'Memory usage: unavailable\n';
+		}
+		#end
+		#end
 
-    errorMessage += '${error.error}\n';
+		info += 'Render method: ${renderMethod()}\n';
+		info += '=====================\n';
+		return info;
+	}
 
-    for (stackItem in callStack) {
-      switch (stackItem) {
-        case FilePos(innerStackItem, file, line, column):
-          errorMessage += '  in ${file}#${line}';
-          if (column != null) errorMessage += ':${column}';
-        case CFunction:
-          errorMessage += '[Function] ';
-        case Module(m):
-          errorMessage += '[Module(${m})] ';
-        case Method(classname, method):
-          errorMessage += '[Function(${classname}.${method})] ';
-        case LocalFunction(v):
-          errorMessage += '[LocalFunction(${v})] ';
-      }
-      errorMessage += '\n';
-    }
+	static function generateErrorMessage(error:UncaughtErrorEvent):String {
+		var msg:String = '';
 
-    return errorMessage;
-  }
+		if (Std.isOfType(error.error, String)) {
+			msg += 'Error (String): ${error.error}\n';
+		} else if (Std.isOfType(error.error, haxe.Exception)) {
+			var err:haxe.Exception = cast error.error;
+			msg += 'Error: ${err.message}\nStack Trace:\n${err.stack}\n';
+		} else if (error.error != null) {
+			msg += 'Error (Dynamic): ${Std.string(error.error)}\n';
+		} else {
+			msg += 'Error: null (Unknown Exception)\n';
+		}
 
-  public static function queryStatus():Void {
-    @:privateAccess
-    var currentStatus = Lib.current.stage.__uncaughtErrorEvents.__enabled;
-    trace('ERROR HANDLER STATUS: ' + currentStatus);
+		var callStack = haxe.CallStack.exceptionStack(true);
+		if (callStack.length == 0) {
+			msg += '\n[Fallback Stack Trace]\n';
+			msg += haxe.CallStack.toString(haxe.CallStack.callStack());
+		} else {
+			msg += '\nStack Trace:\n';
+			for (stackItem in callStack) {
+				switch (stackItem) {
+					case FilePos(_, file, line, column):
+						msg += '  at $file:$line';
+						if (column != null) msg += ':$column';
+					case CFunction:
+						msg += '  at [CFunction]';
+					case Module(m):
+						msg += '  at [Module: $m]';
+					case Method(cls, method):
+						msg += '  at $cls.$method()';
+					case LocalFunction(name):
+						msg += '  at local function $name';
+				}
+				msg += '\n';
+			}
+		}
 
-    #if openfl_enable_handle_error
-    trace('Define: openfl_enable_handle_error is enabled');
-    #else
-    trace('Define: openfl_enable_handle_error is disabled');
-    #end
+		return msg;
+	}
 
-    #if openfl_disable_handle_error
-    trace('Define: openfl_disable_handle_error is enabled');
-    #else
-    trace('Define: openfl_disable_handle_error is disabled');
-    #end
-  }
+	public static function queryStatus():Void {
+		@:privateAccess
+		var currentStatus = Lib.current.stage.__uncaughtErrorEvents.__enabled;
+		trace('ERROR HANDLER STATUS: $currentStatus');
 
-  public static function induceBasicCrash():Void {
-    throw "This is an example of an uncaught exception.";
-  }
+		#if openfl_enable_handle_error
+		trace('Define: openfl_enable_handle_error is ENABLED');
+		#else
+		trace('Define: openfl_enable_handle_error is DISABLED');
+		#end
 
-  public static function induceNullObjectReference():Void {
-    var obj:Dynamic = null;
-    var value = obj.test;
-  }
+		#if openfl_disable_handle_error
+		trace('Define: openfl_disable_handle_error is ENABLED');
+		#else
+		trace('Define: openfl_disable_handle_error is DISABLED');
+		#end
+	}
 
-  public static function induceNullObjectReference2():Void {
-    var obj:Dynamic = null;
-    var value = obj.test();
-  }
+	// Crash examples
+	public static function induceBasicCrash():Void {
+		throw "This is a test crash.";
+	}
 
-  public static function induceNullObjectReference3():Void {
-    var obj:Dynamic = null;
-    var value = obj();
-  }
+	public static function induceNullObjectReference():Void {
+		var obj:Dynamic = null;
+		var value = obj.test;
+	}
 
-  static function renderMethod():String {
-    var outputStr:String = 'UNKNOWN';
-    outputStr = try {
-      switch (FlxG.renderMethod) {
-        case FlxRenderMethod.DRAW_TILES: 'DRAW_TILES';
-        case FlxRenderMethod.BLITTING: 'BLITTING';
-        default: 'UNKNOWN';
-      }
-    } catch (e) {
-      'ERROR ON QUERY RENDER METHOD: ${e}';
-    }
+	public static function induceNullObjectReference2():Void {
+		var obj:Dynamic = null;
+		var value = obj.test();
+	}
 
-    return outputStr;
-  }
+	public static function induceNullObjectReference3():Void {
+		var obj:Dynamic = null;
+		var value = obj();
+	}
+
+	static function renderMethod():String {
+		return try {
+			switch (FlxG.renderMethod) {
+				case FlxRenderMethod.DRAW_TILES: 'DRAW_TILES';
+				case FlxRenderMethod.BLITTING: 'BLITTING';
+				default: 'UNKNOWN';
+			}
+		} catch (e) {
+			'ERROR READING RENDER METHOD: $e';
+		}
+	}
 }

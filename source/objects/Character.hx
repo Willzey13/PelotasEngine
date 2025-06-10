@@ -102,15 +102,29 @@ class Character extends FlxSprite
         }
     }
 
+    public var isSpectator:Bool = false;
+    var danced:Bool = false;
+
     public function charDance():Void {
-        playAnim(idleAnim);
+
+        if (isSpectator)
+        {
+            danced = !danced;
+
+            if (danced)
+                playAnim('danceRight');
+            else
+                playAnim('danceLeft');
+        }
+        else
+            playAnim(idleAnim);
     }
 
     override public function update(elapsed:Float):Void
     {
         super.update(elapsed);
 
-        if (CoolUtil.startsWith(animation.curAnim.name, 'sing'))
+        if (!isSpectator && CoolUtil.startsWith(animation.curAnim.name, 'sing'))
         {
             holdTimer += elapsed;
             if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1)) * 4) // after of 4 steps

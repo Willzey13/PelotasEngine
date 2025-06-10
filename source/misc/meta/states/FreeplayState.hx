@@ -10,6 +10,7 @@ import objects.menus.BFAnimate;
 import openfl.utils.Assets;
 import sys.FileSystem;
 import sys.io.File;
+import misc.meta.states.MainMenuState;
 
 typedef FreeplayEntry = {
     var song:String;
@@ -127,6 +128,9 @@ class FreeplayState extends MusicBeatState
             curDiff++;
             if (curDiff >= songs[select].difficulties.length) curDiff = 0;
         }
+
+        if(controls.justPressed('escape'))
+            CoolUtil.switchState(new MainMenuState());
 
         if (changed)
             updateList();
