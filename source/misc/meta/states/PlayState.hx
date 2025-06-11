@@ -803,15 +803,19 @@ class PlayState extends MusicBeatState
 
 						var swagRect = new FlxRect(0, 0, customNote.width / customNote.scale.x, customNote.height / scaleY);
 
-						if (downscroll && noteY - offsetY + customNote.height >= sustainCenter) {
+						if (downscroll && noteY - offsetY + customNote.height >= sustainCenter)
+						{
 							swagRect.height = (sustainCenter - noteY) / scaleY;
 							swagRect.y = customNote.frameHeight - swagRect.height;
+
 							@:privateAccess customNote.set_clipRect(swagRect);
 							onHoldNote(customNote);
 						}
-						else if (!downscroll && noteY + offsetY <= sustainCenter) {
+						else if (!downscroll && noteY + offsetY <= sustainCenter)
+						{
 							swagRect.y = (sustainCenter - noteY) / scaleY;
 							swagRect.height -= swagRect.y;
+							
 							@:privateAccess customNote.set_clipRect(swagRect);
 							onHoldNote(customNote);
 						}

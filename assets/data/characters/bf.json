@@ -5,6 +5,10 @@
   "assetPath": "characters/BOYFRIEND",
   "flipX": true,
   "singTime": 8.0,
+  "camera_position": [
+		-100,
+		-100
+	],
   "animations": [
     {
       "name": "idle",

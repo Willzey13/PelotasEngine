@@ -1,12 +1,22 @@
 {
   "stages": {
-    "default": {
+    "stage": {
+      "script": "scripts/noloader/stage.hx",
+      "gfVisible": true,
+      "defaultZoomStage": 1.05,
+      "charsPosition": {
+        "bf": [-50, -698],
+        "dad": [100, 50],
+        "gf": [500, -50]
+      }
+    },
+    "military-stress": {
       "script": "scripts/noloader/stage.hx",
       "gfVisible": true,
       "charsPosition": {
-        "bf": [100.0, 200.0],
-        "dad": [300.0, 200.0],
-        "gf": [200, 140]
+        "bf": [1260, -1055],
+        "dad": [675, -730],
+        "gf": [850, -725]
       }
     }
   }
