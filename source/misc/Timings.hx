@@ -25,6 +25,13 @@ class Judgement {
     public var score:Int = 350;
     public var breakCombo:Bool = false;
 
+    // SUSTAIN NOTES
+    var maxTiming = Timings.shit; // 180
+    public static final SICK_THRESHOLD:Float = Timings.sick / Timings.shit;
+    public static final GOOD_THRESHOLD:Float = Timings.good / Timings.shit;
+    public static final BAD_THRESHOLD:Float = Timings.bad / Timings.shit;
+    public static final SHIT_THRESHOLD:Float = 1.0;
+    
     public static var list:Array<Judgement> = [
         new Judgement({name: "sick", timing: Timings.sick, accuracy: 100, health: 2.5, score: 350}),
         new Judgement({name: "good", timing: Timings.good, accuracy: 85, health: 1, score: 200}),

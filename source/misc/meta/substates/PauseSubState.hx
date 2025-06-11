@@ -72,18 +72,11 @@ class PauseSubState extends MusicBeatSubstate
         if (FlxG.keys.justPressed.DOWN)
             changeItem(1);
 
-<<<<<<< HEAD
         for (i in 0...pauseItems.length)
             pauseGrp.members[i].alpha = 0.5;
 
         if (curSelected >= 0 && curSelected < pauseGrp.length)
             pauseGrp.members[curSelected].alpha = 1;
-=======
-        for (i in 0...pauseItems.length) {
-            pauseGrp.members[i].alpha = 0.5;
-            pauseGrp.members[curSelected].alpha = 1;
-        }
->>>>>>> 340bf201c8bdc97b31a9745ef301dc2135b4679c
     }
 
     
@@ -104,13 +97,10 @@ class PauseSubState extends MusicBeatSubstate
                 FlxG.cameras.remove(pauseCam);
                 PlayState.paused = false;
                 FlxG.resetState();
-<<<<<<< HEAD
             case 'Open Chart Editor':
                 FlxG.cameras.remove(pauseCam);
                 PlayState.paused = false;
                 CoolUtil.switchState(new ChartEditorState());
-=======
->>>>>>> 340bf201c8bdc97b31a9745ef301dc2135b4679c
             case 'Exit':
                 FlxG.cameras.remove(pauseCam);
                 PlayState.paused = false;
