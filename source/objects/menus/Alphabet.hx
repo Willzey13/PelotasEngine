@@ -110,7 +110,7 @@ class Alphabet extends FlxSprite
             this.width = firstFrame.frame.width;
             this.height = firstFrame.frame.height;
         } else {
-            this.makeGraphic(10, 10, 0x00000000);
+            this.makeGraphic(charWidth, charHeight, 0x00000000);
         }
     }
 
