@@ -1,0 +1,41 @@
+{
+    "dependencies": [
+        {
+            "name": "flixel",
+            "type": "haxelib",
+            "version": "5.6.0"
+        },
+        {
+            "name": "flixel-ui",
+            "type": "haxelib",
+            "version": "2.5.0"
+        },
+        {
+            "name": "flixel-addons",
+            "type": "haxelib",
+            "version": "3.0.2"
+        },
+        {
+            "name": "lime",
+            "type": "haxelib",
+            "version": "8.0.2"
+        },
+        {
+            "name": "openfl",
+            "type": "haxelib",
+            "version": "9.3.1"
+        },
+        {
+            "name": "flxanimate",
+            "type": "git",
+            "dir": null,
+            "ref": "",
+            "url": "https://github.com/Dot-Stuff/flxanimate"
+        },
+        {
+            "name": "hscript",
+            "type": "haxelib",
+            "version": "2.5.0"
+        }
+    ]
+}

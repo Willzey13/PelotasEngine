@@ -16,12 +16,9 @@ This project uses the following HaxeFlixel libraries and other tools to function
 
 ### Installation
 
-To ensure that you have the correct libraries installed, use the following commands in the terminal:
+To ensure that you have the correct libraries installed, first, install HMM by using the following command in the terminal:
 
-'''bash
-haxelib install flixel 5.6.0
-haxelib install flixel-ui 2.5.0
-haxelib install flixel-addons 3.0.2
-haxelib install lime 8.0.2
-haxelib install openfl 9.3.1
-haxelib git flxanimate https://github.com/Dot-Stuff/flxanimate 768740a56b26aa0c072720e0d1236b94afe68e3e
+haxelib --global install hmm
+haxelib run hmm init
+
+Then, use "hmm install" or "haxelib run hmm install" to really install the libraries.
