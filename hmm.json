@@ -13,7 +13,7 @@
         {
             "name": "flixel-addons",
             "type": "haxelib",
-            "version": "3.0.2"
+            "version": "3.3.2"
         },
         {
             "name": "lime",
