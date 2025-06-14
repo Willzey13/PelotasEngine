@@ -86,3 +86,82 @@ class NoteSplash extends FlxSprite
 		centerOrigin();
 	}
 }
+
+class NoteCover extends FlxSprite
+{
+    public var noteID:Int = 0;
+    private var isHolding:Bool = false;
+    private var textureLoaded:String = null;
+
+    public function new(x:Float = 0, y:Float = 0, ?note:Int = 0)
+    {
+        super(x, y);
+        this.noteID = note;
+
+        loadAnimations();
+        alpha = 0;
+    }
+
+    function loadAnimations()
+    {
+        frames = Paths.getSparrowAtlas('holdCovers/holdCover$noteID');
+
+        switch (noteID)
+        {
+            case 0:
+                animation.addByPrefix("start", "holdCoverStartPurple", 24, false);
+                animation.addByPrefix("hold",  "holdCoverPurple",      24, true);
+                animation.addByPrefix("end",   "holdCoverEndPurple",   24, false);
+            case 1:
+                animation.addByPrefix("start", "holdCoverStartBlue",   24, false);
+                animation.addByPrefix("hold",  "holdCoverBlue",        24, true);
+                animation.addByPrefix("end",   "holdCoverEndBlue",     24, false);
+            case 2:
+                animation.addByPrefix("start", "holdCoverStartGreen",  24, false);
+                animation.addByPrefix("hold",  "holdCoverGreen",       24, true);
+                animation.addByPrefix("end",   "holdCoverEndGreen",    24, false);
+            case 3:
+                animation.addByPrefix("start", "holdCoverStartRed",    24, false);
+                animation.addByPrefix("hold",  "holdCoverRed",         24, true);
+                animation.addByPrefix("end",   "holdCoverEndRed",      24, false);
+        }
+    }
+
+	public var justPressed:Bool = false;
+	public var isPressed:Bool = false;
+	public var justReleased:Bool = false;
+
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+
+        if (justPressed)
+        {
+            animation.play('start', false);
+            alpha = 1;
+            isHolding = true;
+        }
+        else if (isPressed && isHolding)
+        {
+            if (animation.curAnim != null && animation.curAnim.finished && animation.name != "hold")
+                animation.play('hold', true);
+        }
+        else if (justReleased && isHolding)
+        {
+            animation.play('end', false);
+            isHolding = false;
+        }
+
+        // Fade out when end animation finishes
+        // if (!isHolding && animation.name == "end" && animation.curAnim != null && animation.curAnim.finished) alpha = 0;
+    }
+
+	public function playSplash(x:Float, y:Float)
+	{
+		alpha = 1;
+		setPosition(x, y);
+		justPressed = true;
+		centerOffsets();
+		centerOrigin();
+	}
+}

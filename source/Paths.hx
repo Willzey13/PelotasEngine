@@ -27,6 +27,11 @@ class Paths
         return getPath('data/songs/$direction/$key.json', library);
     }
 
+    public static function getFrag(key:String, ?library:String)
+    {
+        return getPath('shaders/$key.frag', library);
+    }
+
     public static function getTextFromFile(key:String, ?library:String)
     {
         return getPath('$key', library);
@@ -46,19 +51,29 @@ class Paths
         var bitmap:BitmapData = BitmapData.fromFile(pngPath);
 
         var graphic:FlxGraphic = FlxGraphic.fromBitmapData(bitmap, true);
+        MemoryManager.trackGraphic(key, graphic);
+
         return FlxAtlasFrames.fromSparrow(graphic, xml);
     }
 
     public static function image(key:String, ?library:String = ''):FlxGraphic
     {
         var path = getPath('images/$key.png', library);
-        return FlxGraphic.fromBitmapData(BitmapData.fromFile(path), true);
+        var graphic = FlxGraphic.fromBitmapData(BitmapData.fromFile(path), true);
+
+        MemoryManager.trackGraphic(key, graphic);
+
+        return graphic;
     }
 
     public static function sound(key:String, ?library:String = ''):Sound
     {
         var path = getPath('sounds/$key.ogg', library);
-        return Sound.fromFile(path);
+        var sound = Sound.fromFile(path);
+
+        MemoryManager.trackSound(key, sound);
+
+        return sound;
     }
 
     public static function voices(song:String, ?isPlayer:Bool = false):Sound
@@ -66,7 +81,11 @@ class Paths
         var suffix = isPlayer ? '-Player' : '';
         var songKey = '${getFormatPath(song)}/Voices$suffix';
         var path = getPath('songs/$songKey.ogg');
-        return Sound.fromFile(path);
+        var sound = Sound.fromFile(path);
+
+        MemoryManager.trackSound(songKey, sound);
+
+        return sound;
     }
 
     public static function voicesopponent(song:String, ?isOpponent:Bool = false):Sound
@@ -74,13 +93,21 @@ class Paths
         var suffix = isOpponent ? '-Opponent' : '';
         var songKey = '${getFormatPath(song)}/Voices$suffix';
         var path = getPath('songs/$songKey.ogg');
-        return Sound.fromFile(path);
+        var sound = Sound.fromFile(path);
+
+        MemoryManager.trackSound(songKey, sound);
+
+        return sound;
     }
 
     public static function inst(song:String):Sound
     {
         var path = getPath('songs/${getFormatPath(song)}/Inst.ogg');
-        return Sound.fromFile(path);
+        var sound = Sound.fromFile(path);
+
+        MemoryManager.trackSound('${getFormatPath(song)}/Inst', sound);
+
+        return sound;
     }
 
     public static function data(key:String):String

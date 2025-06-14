@@ -80,7 +80,7 @@ class CustomBar extends FlxSpriteGroup
 		leftBar.clipRect = leftBar.clipRect;
 		rightBar.clipRect = rightBar.clipRect;
 
-		barCenter = leftBar.x + leftBar.clipRect.width;
+		barCenter = leftBar.x + leftBar.clipRect.width + barOffset.x;
 	}
 
 	public function setBarColors(fill:FlxColor, empty:FlxColor):Void {

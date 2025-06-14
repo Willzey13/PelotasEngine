@@ -38,6 +38,10 @@ class ScriptManagerHaxe
             interp.variables.set("playState", playState);
         }
 
+        interp.variables.set("HealthIcon", objects.gameHud.HealthIcon);
+        interp.variables.set("FlxG", flixel.FlxG);
+        interp.variables.set("FlxSprite", flixel.FlxSprite);
+
         var scriptCode = File.getContent(path);
         var expr = parser.parseString(scriptCode);
         interp.execute(expr);
@@ -62,6 +66,10 @@ class ScriptManagerHaxe
 
                 interp.variables.set("playState", playState);
             }
+
+            interp.variables.set("HealthIcon", objects.gameHud.HealthIcon);
+            interp.variables.set("FlxG", flixel.FlxG);
+            interp.variables.set("FlxSprite", flixel.FlxSprite);
 
             if (!interp.variables.exists(funcName)) continue;
 

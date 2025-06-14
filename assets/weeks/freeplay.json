@@ -22,5 +22,9 @@
   { 
     "song": "depredation", 
     "difficulties": ["hard"] 
+  },
+  { 
+    "song": "expurgation", 
+    "difficulties": ["hard", "new"] 
   }
 ]

@@ -17,18 +17,20 @@ class Note extends FlxSprite
 	public var strumData:Int = 0;
 	public var offsetX:Float = 0;
 	public var sustainLength:Float = 0;
+	public var onHoldLengthHit:Float = 0;
 	public var type:String = "";
 	public var beenAccurately:Bool = false;
 	public var areHolding:Bool = false;
 	public static var swagWidth:Float = 160 * 0.7;
     
-	public function new(x:Float, y:Float, direction:String, time:Float, ?isSustain:Bool = false, ?isHoldEnd:Bool = false)
+	public function new(x:Float, y:Float, direction:String, time:Float, ?isSustain:Bool = false, ?isHoldEnd:Bool = false, ?type:String)
     {
         super(x, y);
         this.direction = direction;
         this.time = time;
         this.isSustain = isSustain;
 		this.isHoldEnd = isHoldEnd;
+		this.type = type;
 		//this.beenHit = false;
 
         var isNotePixel = PlayState.isPixel;
@@ -54,6 +56,37 @@ class Note extends FlxSprite
 					animation.addByPrefix('rightNote', 'noteRight');
 					strumData = 3;
             }
+		}
+		
+		switch (type) {
+			case "Halo Note":
+				frames = Paths.getSparrowAtlas('HALONOTE_assets');
+
+				switch (direction)
+				{
+					case 'left':
+						animation.addByPrefix('leftNote', 'purple0', 24, true);
+						strumData = 0;
+						animation.play('leftNote');
+
+					case 'down':
+						animation.addByPrefix('downNote', 'blue0', 24, true);
+						strumData = 1;
+						animation.play('downNote');
+
+					case 'up':
+						animation.addByPrefix('upNote', 'green0', 24, true);
+						strumData = 2;
+						animation.play('upNote');
+
+					case 'right':
+						animation.addByPrefix('rightNote', 'red0', 24, true);
+						strumData = 3;
+						animation.play('rightNote');
+				}
+
+				offsetX += 25;
+				ignoreNote = true;
 		}
 
 		if (!isSustain)
@@ -115,6 +148,8 @@ class Note extends FlxSprite
 		}
 		x += offsetX;
     }
+
+	public var ignoreNote:Bool = false;
 
 	public function resetNotes()
 	{

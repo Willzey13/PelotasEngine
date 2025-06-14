@@ -16,8 +16,10 @@ class Character extends FlxSprite
     public var idleAnim:String = "idle";
     public var isOpponent:Bool = false;
     public var specialAnim:Bool = false;
+    public var singHoldMultiplier:Float = 4;
     public var curChar:String = 'bf';
     public var cameraPosition:FlxPoint = new FlxPoint(0, 0);
+    public var curIcon:String = 'face';
 
     public function new(x:Float, y:Float, character:String, isOpponent:Bool = false) {
         super(x, y);
@@ -45,6 +47,7 @@ class Character extends FlxSprite
         var assetPath:String = isVersion1 ? json.assetPath : json.image;
         frames = Paths.getSparrowAtlas(assetPath);
         var anims:Array<Dynamic> = json.animations;
+        var singTime:Float = 4;
 
         if (Reflect.hasField(json, "flipX")) {
             if (!isOpponent)
@@ -67,6 +70,14 @@ class Character extends FlxSprite
             cameraPosition.set(0, 0);
         }
 
+        if (Reflect.hasField(json, "scale"))
+        {
+            if(json.scale != 1)
+                scale.set(json.scale, json.scale);
+            else
+                scale.set(1, 1);
+        }
+
         for (anim in anims) {
             var name:String;
             var prefix:String;
@@ -76,12 +87,26 @@ class Character extends FlxSprite
                 name = anim.name;
                 prefix = anim.prefix;
                 offsets = anim.offsets;
+
+                if (Reflect.hasField(json, "singTime"))
+                    singTime = json.singTime;
+
+                curIcon = curChar;
             } else {
                 name = anim.anim;
                 prefix = anim.name;
                 offsets = anim.offsets;
+
+                if (Reflect.hasField(json, "sing_duration"))
+                    singTime = json.sing_duration;
+
+                if (Reflect.hasField(json, "healthicon"))
+                    curIcon = json.healthicon;
+                else
+                    curIcon = 'face';
             }
 
+            singHoldMultiplier = singTime;
             var loop:Bool = isVersion1 ? false : (anim.loop == true);
             animation.addByPrefix(name, prefix, isVersion1 ? 24 : anim.fps, loop);
             animOffsets.set(name, offsets);
@@ -127,7 +152,7 @@ class Character extends FlxSprite
         if (!isSpectator && CoolUtil.startsWith(animation.curAnim.name, 'sing'))
         {
             holdTimer += elapsed;
-            if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1)) * 4) // after of 4 steps
+            if (holdTimer >= Conductor.stepCrochet * (0.0011 / (FlxG.sound.music != null ? FlxG.sound.music.pitch : 1)) * singHoldMultiplier)
             {
                 charDance();
                 holdTimer = 0;

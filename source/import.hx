@@ -8,3 +8,4 @@ import misc.CoolUtil;
 
 // ================ DESGRAÇA Imports ================ 
 import misc.scripts.ScriptManagerHaxe;
+import objects.MemoryCounter.MemoryManager;

@@ -1,0 +1,10 @@
+{
+    "select": {
+        "offsets": [0, 0],
+        "loop": true
+    },
+    "NO select": {
+        "offsets": [-5, 2],
+        "loop": true
+    }
+}

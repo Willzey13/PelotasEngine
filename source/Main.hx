@@ -8,12 +8,15 @@ import misc.meta.states.MainMenuState;
 import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.FPS;
+import objects.MemoryCounter;
 
-class Main extends Sprite {
+class Main extends Sprite
+{
 	var skipIntro:Bool = true;
 	public var fps:Int = 60;
 
 	public static var fpsCounter:FPS;
+	public static var memoryCounter:MemoryCounter;
 
 	public static function main():Void {
 		CrashHandler.initialize();
@@ -42,8 +45,11 @@ class Main extends Sprite {
 		addChild(game);
 
 		// #if debug
-		// fpsCounter = new FPS(10, 3, 0xFFFFFF);
-		// addChild(fpsCounter);
+		fpsCounter = new FPS(10, 3, 0xFFFFFF);
+		memoryCounter = new MemoryCounter(10, 13, 0xFFFFFF);
+
+		addChild(memoryCounter);
+		addChild(fpsCounter);
 		// #end
 
 		trace("Main initialized com sucesso.");
